@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { HomeDesign, Button, Div } from "../styles/StyleHome";
+import { HomeDesign, Button, Div, Info } from "../styles/StyleHome";
 
 function Home() {
   const [input, setInput] = useState("");
@@ -14,26 +14,27 @@ function Home() {
       method: "GET",
       headers: {
         "X-RapidAPI-Key": "6ffefb9038msh8fadf33c5debc2ap16ec85jsn87d2910a1bf1",
-        "X-RapidAPI-Host": "house-plants.p.rapidapi.com",
+        "X-RapidAPI-Host": "plantk1.p.rapidapi.com",
       },
     };
-
-    fetch("https://house-plants.p.rapidapi.com/all", plant)
+    fetch("https://plantk1.p.rapidapi.com/", plant)
       .then((response) => {
         return response.json();
       })
-      .then((response) => console.log(response))
-      // .then((data) => {
-      //   setContainer(data);
-      // })
-
+      .then((data) => {
+        setContainer(data);
+      })
       .catch((err) => console.error(err));
   };
 
   const onChangeHandler = (e) => {
-    setInput(e.target.value);
+    const searchInput = e.target.value;
+    const filterItems = container.filter((val) => {
+      return val.CommonName.toLowerCase().includes(searchInput.toLowerCase());
+    });
+    setContainer(filterItems);
   };
-  const searchButtonSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
   };
 
@@ -44,7 +45,7 @@ function Home() {
         <Div>
           <div className="container">
             <div className="container__item">
-              <form className="form" onSubmit={searchButtonSubmit}>
+              <form className="form" onSubmit={handleSubmit}>
                 <input
                   className="form__field"
                   type="text"
@@ -62,9 +63,19 @@ function Home() {
             </div>
           </div>
         </Div>
-        {/* {container.map((item) => {
-          return <p>{item}</p>;
-        })} */}
+        <Info>
+          {container.map((item) => {
+            const { id, Commonname, Watering, Light_ideal, img } = item;
+            return (
+              <h1 key={id}>
+                <img src={img} alt="" />
+                <h1>Plant Name: {Commonname}</h1>
+                <h1>How to water: {Watering}</h1>
+                <h1>Sun: {Light_ideal}</h1>
+              </h1>
+            );
+          })}
+        </Info>
 
         <Div>
           <Button>Learn</Button>

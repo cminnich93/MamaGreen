@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HomeDesign = styled.div`
   text-align: center;
   margin-top: 150px;
+  font-family: "Quicksand", sans-serif;
 
   .container {
     height: 100%;
@@ -26,12 +27,12 @@ export const HomeDesign = styled.div`
     display: inline-block;
     background: rgb(68, 158, 68);
     color: white;
-    font: inherit;
     border: 0;
     outline: 0;
     padding: 0;
     transition: all 200ms ease-in;
     cursor: pointer;
+    font-size: 15px;
 
     &--primary {
       background: $button-bg-color;
@@ -61,11 +62,11 @@ export const HomeDesign = styled.div`
       width: 360px;
       background: #fff;
       color: $input-text-color;
-      font: inherit;
       box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
       border: 0;
       outline: 0;
       padding: 22px 18px;
+      font-size: 15px;
     }
   }
 `;
@@ -99,4 +100,10 @@ export const Button = styled.div`
 export const Div = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
+`;
+
+export const Info = styled.div`
+  .h1 {
+    font-size: inherit;
+  }
 `;
