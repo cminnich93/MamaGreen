@@ -63,19 +63,26 @@ function Home() {
             </div>
           </div>
         </Div>
-        <Info>
-          {container.map((item) => {
-            const { id, Commonname, Watering, Light_ideal, img } = item;
-            return (
-              <h1 key={id}>
+
+        {container.map((item) => {
+          const {
+            id,
+            Watering,
+            ["Light ideal"]: Light_ideal,
+            ["Common name"]: Common_name,
+            img,
+          } = item;
+          return (
+            <Info>
+              <p key={id}>
                 <img src={img} alt="" />
-                <h1>Plant Name: {Commonname}</h1>
-                <h1>How to water: {Watering}</h1>
-                <h1>Sun: {Light_ideal}</h1>
-              </h1>
-            );
-          })}
-        </Info>
+                <p>Plant Name: {Common_name}</p>
+                <p>How to water: {Watering}</p>
+                <p>Sun: {Light_ideal}</p>
+              </p>
+            </Info>
+          );
+        })}
 
         <Div>
           <Button>Learn</Button>

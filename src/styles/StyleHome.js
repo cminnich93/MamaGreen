@@ -103,7 +103,7 @@ export const Div = styled.div`
 `;
 
 export const Info = styled.div`
-  .h1 {
-    font-size: inherit;
+  .p {
+    display: flex;
   }
 `;
