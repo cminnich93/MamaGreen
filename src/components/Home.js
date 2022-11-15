@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { HomeDesign, Button, Div, Info } from "../styles/StyleHome";
 
 function Home() {
-  const [input, setInput] = useState("");
+  const [search, setSearch] = useState("");
   const [container, setContainer] = useState([]);
 
   useEffect(() => {
     fetchMe();
-  }, [input]);
+  }, [search]);
 
   const fetchMe = () => {
     const plant = {
@@ -28,11 +28,7 @@ function Home() {
   };
 
   const onChangeHandler = (e) => {
-    const searchInput = e.target.value;
-    const filterItems = container.filter((val) => {
-      return val.CommonName.toLowerCase().includes(searchInput.toLowerCase());
-    });
-    setContainer(filterItems);
+    setSearch(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +46,7 @@ function Home() {
                   className="form__field"
                   type="text"
                   placeholder="Enter Plant Name Here..."
-                  value={input}
+                  value={search}
                   onChange={onChangeHandler}
                 />
                 <button
@@ -64,25 +60,39 @@ function Home() {
           </div>
         </Div>
 
-        {container.map((item) => {
-          const {
-            id,
-            Watering,
-            ["Light ideal"]: Light_ideal,
-            ["Common name"]: Common_name,
-            img,
-          } = item;
-          return (
-            <Info>
-              <p key={id}>
+        {container
+          .filter((item) => {
+            if (search == "") {
+              return item;
+            } else if (
+              item.Common_name.toLowerCase().includes(
+                setContainer.toLowerCase()
+              )
+            ) {
+              return item;
+            }
+          })
+          .map((item) => {
+            const {
+              id,
+              Watering,
+              ["Light ideal"]: Light_ideal,
+              ["Common name"]: Common_name,
+              img,
+              Growth,
+            } = item;
+            return (
+              <Info key={id}>
                 <img src={img} alt="" />
-                <p>Plant Name: {Common_name}</p>
-                <p>How to water: {Watering}</p>
-                <p>Sun: {Light_ideal}</p>
-              </p>
-            </Info>
-          );
-        })}
+                <div>Plant Name: {Common_name}</div>
+                <div>How to Water: {Watering}</div>
+                <div>How Fast It Grows: {Growth}</div>
+                <div>Sun: {Light_ideal}</div>
+              </Info>
+
+              // a key property that must be put in the outermost element and must be unique.
+            );
+          })}
 
         <Div>
           <Button>Learn</Button>

@@ -103,7 +103,6 @@ export const Div = styled.div`
 `;
 
 export const Info = styled.div`
-  .p {
-    display: flex;
-  }
+  font-size: 20px;
+  margin-bottom: 40px;
 `;
