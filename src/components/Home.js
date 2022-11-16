@@ -14,10 +14,10 @@ function Home() {
       method: "GET",
       headers: {
         "X-RapidAPI-Key": "6ffefb9038msh8fadf33c5debc2ap16ec85jsn87d2910a1bf1",
-        "X-RapidAPI-Host": "plantk1.p.rapidapi.com",
+        "X-RapidAPI-Host": "house-plants2.p.rapidapi.com",
       },
     };
-    fetch("https://plantk1.p.rapidapi.com/", plant)
+    fetch("https://house-plants2.p.rapidapi.com/", plant)
       .then((response) => {
         return response.json();
       })
@@ -28,8 +28,10 @@ function Home() {
   };
 
   const onChangeHandler = (e) => {
+    e.preventDefault();
     setSearch(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -60,39 +62,31 @@ function Home() {
           </div>
         </Div>
 
-        {container
-          .filter((item) => {
-            if (search == "") {
-              return item;
-            } else if (
-              item.Common_name.toLowerCase().includes(
-                setContainer.toLowerCase()
-              )
-            ) {
-              return item;
-            }
-          })
-          .map((item) => {
-            const {
-              id,
-              Watering,
-              ["Light ideal"]: Light_ideal,
-              ["Common name"]: Common_name,
-              img,
-              Growth,
-            } = item;
-            return (
-              <Info key={id}>
-                <img src={img} alt="" />
-                <div>Plant Name: {Common_name}</div>
-                <div>How to Water: {Watering}</div>
-                <div>How Fast It Grows: {Growth}</div>
-                <div>Sun: {Light_ideal}</div>
-              </Info>
+        {container.map((item) => {
+          const {
+            id,
+            Watering,
+            img,
+            Growth,
+            Use,
+            ["Light ideal"]: Light_ideal,
+            ["Common name"]: Common_name,
+            ["Latin name"]: Latin_name,
+          } = item;
+          return (
+            <Info key={id}>
+              <img src={img} alt="" />
+              <div>Plant Name: {Common_name}</div>
+              <div>Latim Name: {Latin_name}</div>
+              <div>Watering: {Watering}</div>
+              <div>Growth: {Growth}</div>
+              <div>Light Ideal: {Light_ideal}</div>
+              <div>Use: {Use}</div>
+            </Info>
 
-              // a key property that must be put in the outermost element and must be unique.
-            );
-          })}
+            // a key property that must be put in the outermost element and must be unique.
+          );
+        })}
 
         <Div>
           <Button>Learn</Button>
