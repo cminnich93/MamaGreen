@@ -1,13 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { HomeDesign, Button, Div, Info } from "../styles/StyleHome";
 
 function Home() {
-  const [search, setSearch] = useState("");
-  const [container, setContainer] = useState([]);
+  const [items, setItems] = useState([]);
+  const [query, setQuery] = useState("");
+  // query is for what to search for
 
+  const filterItems = useMemo(() => {
+    // return an array of item that you return
+    return items.map((item) => {
+      console.log({
+        // spread operator (GIVE ME ALL THE ITEMS)
+        ...item,
+        "Common name": item["Common name"],
+        "Latin name": item["Latin name"],
+      });
+
+      return {
+        "Common name": item["Common name"],
+        "Latin name": item["Latin name"],
+      };
+
+      // return item.toLowercase().includes(query.toLowerCase());
+    });
+  }, [items, query]);
+
+  console.log(filterItems);
+
+  // [] means to fetch data 1 time
+  // [item] means to fetch data every time item changes
   useEffect(() => {
     fetchMe();
-  }, [search]);
+  }, []);
 
   const fetchMe = () => {
     const plant = {
@@ -22,15 +46,12 @@ function Home() {
         return response.json();
       })
       .then((data) => {
-        setContainer(data);
+        setItems(data);
       })
       .catch((err) => console.error(err));
   };
 
-  const onChangeHandler = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value);
-  };
+  // const onChangeHandler =
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,15 +62,15 @@ function Home() {
       <div>
         <img src="./images/cactus.png" alt="cactus" />
         <Div>
-          <div className="container">
-            <div className="container__item">
+          <div className="search">
+            <div className="search__item">
               <form className="form" onSubmit={handleSubmit}>
                 <input
                   className="form__field"
                   type="text"
                   placeholder="Enter Plant Name Here..."
-                  value={search}
-                  onChange={onChangeHandler}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
                 />
                 <button
                   type="submit"
@@ -62,7 +83,7 @@ function Home() {
           </div>
         </Div>
 
-        {container.map((item) => {
+        {filterItems.map((item) => {
           const {
             id,
             Watering,
@@ -77,7 +98,7 @@ function Home() {
             <Info key={id}>
               <img src={img} alt="" />
               <div>Plant Name: {Common_name}</div>
-              <div>Latim Name: {Latin_name}</div>
+              <div>Latin Name: {Latin_name}</div>
               <div>Watering: {Watering}</div>
               <div>Growth: {Growth}</div>
               <div>Light Ideal: {Light_ideal}</div>
