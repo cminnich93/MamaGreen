@@ -51,6 +51,14 @@ function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  const handleFilter = (e) => {
+    const searchItem = e.target.value;
+    const newFilter = items.filter((value) => {
+      return value.Common_name.toLowercase().includes(searchItem.toLowercase());
+    });
+    setQuery(e.target.value);
+    setFilterData(newFilter);
+  };
 
   return (
     <HomeDesign>
@@ -64,7 +72,7 @@ function Home() {
                 type="text"
                 placeholder="Enter Plant Name Here..."
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={handleFilter}
               />
               <button
                 type="submit"
@@ -78,7 +86,7 @@ function Home() {
       </Div>
 
       <Div>
-        {filterData.length != 0 && (
+        {filterData.length !== 0 && (
           <div>
             {items.map((item) => {
               const {
