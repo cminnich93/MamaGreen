@@ -46,18 +46,21 @@ function Home() {
       .catch((err) => console.error(err));
   };
 
-  // const onChangeHandler =
-
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
   const handleFilter = (e) => {
     const searchItem = e.target.value;
     const newFilter = items.filter((value) => {
-      return value.Common_name.toLowercase().includes(searchItem.toLowercase());
+      return value.filterItems.toLowercase().includes(searchItem.toLowercase());
     });
-    setQuery(e.target.value);
+
     setFilterData(newFilter);
+  };
+
+  const onChangeHandler = (e) => {
+    setQuery(e.target.value);
   };
 
   return (
