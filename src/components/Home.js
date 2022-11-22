@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { HomeDesign, Button, Div, Info } from "../styles/StyleHome";
+import { SearchPlants } from "../utils/helper/Search";
 
 function Home() {
   const [items, setItems] = useState([]);
@@ -7,20 +8,12 @@ function Home() {
   // query is for what to search for
   const [filterData, setFilterData] = useState([]);
 
-  const filterItems = useMemo(() => {
-    // return an array of item that you return
-    return items.map((allName) => {
-      const {
-        // spread operator (GIVE ME ALL THE ITEMS)...
-        ["Common name"]: Common_name,
-        ["Latin name"]: Latin_name,
-      } = allName;
-
-      return { Common_name }, { Latin_name };
-
-      // return item.toLowercase().includes(query.toLowerCase());
-    });
-  }, [items, query]);
+  useEffect(() => {
+    if (items && query) {
+      const searchResults = SearchPlants(items, query);
+      setFilterData(searchResults ? searchResults : []);
+    }
+  }, [query, items]);
 
   // [] means to fetch data 1 time
   // [item] means to fetch data every time item changes
@@ -41,6 +34,7 @@ function Home() {
         return response.json();
       })
       .then((data) => {
+        console.log({ data });
         setItems(data);
       })
       .catch((err) => console.error(err));
@@ -48,15 +42,6 @@ function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
-
-  const handleFilter = (e) => {
-    const searchItem = e.target.value;
-    const newFilter = items.filter((value) => {
-      return value.filterItems.toLowercase().includes(searchItem.toLowercase());
-    });
-
-    setFilterData(newFilter);
   };
 
   const onChangeHandler = (e) => {
@@ -75,7 +60,7 @@ function Home() {
                 type="text"
                 placeholder="Enter Plant Name Here..."
                 value={query}
-                onChange={handleFilter}
+                onChange={(e) => onChangeHandler(e)}
               />
               <button
                 type="submit"
@@ -89,9 +74,11 @@ function Home() {
       </Div>
 
       <Div>
-        {filterData.length !== 0 && (
+        {query === "" ? (
+          <div></div>
+        ) : filterData.length > 0 ? (
           <div>
-            {items.map((item) => {
+            {filterData.map((item) => {
               const {
                 id,
                 Watering,
@@ -115,6 +102,10 @@ function Home() {
                 // a key property that must be put in the outermost element and must be unique.
               );
             })}
+          </div>
+        ) : (
+          <div>
+            <div>NOT FOUND</div>
           </div>
         )}
       </Div>
