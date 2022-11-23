@@ -110,9 +110,9 @@ function Home() {
         )}
       </Div>
 
-      <Div>
+      {/* <Div>
         <Button>Learn</Button>
-      </Div>
+      </Div> */}
       <Div>
         <Button>About Us</Button>
       </Div>
