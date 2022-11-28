@@ -22,9 +22,9 @@ export const SearchPlants = (filterItems, searchWord) => {
 
       // true or false
       if (commonName) return plant;
-
-      return console.log("RETURNING PLANTS:", newPlantArray.length);
+      return "hi";
     });
+    console.log("RETURNING PLANTS:", newPlantArray.length);
 
     return newPlantArray;
   }
