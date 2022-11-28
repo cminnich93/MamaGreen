@@ -25,7 +25,7 @@ function Home() {
     const plant = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "6ffefb9038msh8fadf33c5debc2ap16ec85jsn87d2910a1bf1",
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
         "X-RapidAPI-Host": "house-plants2.p.rapidapi.com",
       },
     };
@@ -85,9 +85,9 @@ function Home() {
                 img,
                 Growth,
                 Use,
-                ["Light ideal"]: Light_ideal,
-                ["Common name"]: Common_name,
-                ["Latin name"]: Latin_name,
+                "Light ideal": Light_ideal,
+                "Common name": Common_name,
+                "Latin name": Latin_name,
               } = item;
               return (
                 <Info key={id}>
@@ -114,7 +114,9 @@ function Home() {
         <Button>Learn</Button>
       </Div> */}
       <Div>
-        <Button>About Us</Button>
+        <a href="https://github.com/thiratikan">
+          <Button>About Us</Button>
+        </a>
       </Div>
     </HomeDesign>
   );
