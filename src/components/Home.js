@@ -85,9 +85,9 @@ function Home() {
                 img,
                 Growth,
                 Use,
-                ["Light ideal"]: Light_ideal,
-                ["Common name"]: Common_name,
-                ["Latin name"]: Latin_name,
+                "Light ideal": Light_ideal,
+                "Common name": Common_name,
+                "Latin name": Latin_name,
               } = item;
               return (
                 <Info key={id}>
