@@ -3,7 +3,11 @@ import styled from "styled-components";
 export const HomeDesign = styled.div`
   text-align: center;
   margin-top: 150px;
-  font-family: "Quicksand", sans-serif;
+
+  img {
+    margin: auto;
+    text-align: center;
+  }
 
   .container {
     height: 100%;
@@ -32,7 +36,7 @@ export const HomeDesign = styled.div`
     padding: 0;
     transition: all 200ms ease-in;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 20px;
 
     &--primary {
       background: $button-bg-color;
@@ -59,14 +63,16 @@ export const HomeDesign = styled.div`
   //** form
   .form {
     &__field {
-      width: 360px;
+      margin-top: 30px;
+      margin-bottom: 35px;
+      width: 550px;
       background: #fff;
       color: $input-text-color;
       box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
       border: 0;
       outline: 0;
       padding: 22px 18px;
-      font-size: 15px;
+      font-size: 17px;
     }
   }
 `;
@@ -80,9 +86,8 @@ export const Button = styled.div`
   color: #0f1111;
   cursor: pointer;
   display: inline-block;
-  font-family: "Amazon Ember", sans-serif;
-  font-size: 13px;
-  line-height: 29px;
+  font-size: 18px;
+  line-height: 45px;
   padding: 0 10px 0 11px;
   position: relative;
   text-decoration: none;
@@ -90,12 +95,13 @@ export const Button = styled.div`
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-  width: 100px;
+  width: 120px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin: auto;
   text-align: center;
+  margin-top: 50px;
 `;
 export const Div = styled.div`
   margin-top: 20px;
@@ -104,5 +110,4 @@ export const Div = styled.div`
 
 export const Info = styled.div`
   font-size: 20px;
-  margin-bottom: 40px;
 `;
