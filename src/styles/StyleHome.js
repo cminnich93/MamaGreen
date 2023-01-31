@@ -3,16 +3,10 @@ import styled from "styled-components";
 export const HomeDesign = styled.div`
   text-align: center;
   margin-top: 150px;
-<<<<<<< HEAD
   font-family: "Quicksand", sans-serif;
-=======
-
   img {
     margin: auto;
-    text-align: center;
   }
-
->>>>>>> d7fd1e554d70fdd9de30152378f898c21d542603
   .container {
     height: 100%;
   }
@@ -37,12 +31,7 @@ export const HomeDesign = styled.div`
     padding: 0;
     transition: all 200ms ease-in;
     cursor: pointer;
-<<<<<<< HEAD
     font-size: 15px;
-=======
-    font-size: 20px;
-
->>>>>>> d7fd1e554d70fdd9de30152378f898c21d542603
     &--primary {
       background: $button-bg-color;
       color: $button-text-color;
@@ -111,4 +100,8 @@ export const Div = styled.div`
 
 export const Info = styled.div`
   font-size: 20px;
+  img {
+    height: 200px;
+    width: 200px;
+  }
 `;

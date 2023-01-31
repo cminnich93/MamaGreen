@@ -39,7 +39,7 @@ function Home() {
         "X-RapidAPI-Host": "house-plants2.p.rapidapi.com",
       },
     };
-    fetch("https://house-plants2.p.rapidapi.com/", plant)
+    fetch("https://house-plants2.p.rapidapi.com/all", plant)
       .then((response) => {
         return response.json();
       })
