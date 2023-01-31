@@ -39,7 +39,7 @@ function Home() {
         "X-RapidAPI-Host": "house-plants2.p.rapidapi.com",
       },
     };
-    fetch("https://house-plants2.p.rapidapi.com/", plant)
+    fetch("https://house-plants2.p.rapidapi.com/all", plant)
       .then((response) => {
         return response.json();
       })
@@ -94,7 +94,7 @@ function Home() {
                   const {
                     id,
                     Watering,
-                    img,
+                    Img,
                     Growth,
                     Use,
                     "Light ideal": Light_ideal,
@@ -105,7 +105,7 @@ function Home() {
                     <Card>
                       <CardBody>
                         <Info key={id}>
-                          <img src={img} alt="" align="center" />
+                          <img src={Img} alt="" align="center" />
                           <Stack mt="5" spacing="3">
                             <CardHeader>
                               <Heading size="md">

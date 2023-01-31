@@ -12,7 +12,6 @@ export const HomeDesign = styled.div`
   .container {
     height: 100%;
   }
-
   //** helper
   .container {
     display: flex;
@@ -21,11 +20,9 @@ export const HomeDesign = styled.div`
     justify-content: center;
     margin-bottom: 40px;
   }
-
   .uppercase {
     text-transform: uppercase;
   }
-
   //** button
   .btn {
     display: inline-block;
@@ -44,22 +41,18 @@ export const HomeDesign = styled.div`
       box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
       border-radius: 2px;
       padding: 12px 36px;
-
       &:hover {
         background: darken($button-bg-color, 4%);
       }
-
       &:active {
         background: $button-bg-color;
         box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
       }
     }
-
     &--inside {
       margin-left: -96px;
     }
   }
-
   //** form
   .form {
     &__field {
