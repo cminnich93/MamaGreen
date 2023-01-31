@@ -106,6 +106,7 @@ function Home() {
                       <CardBody>
                         <Info key={id}>
                           <img src={img} alt="" align="center" />
+
                           <Stack mt="5" spacing="3">
                             <CardHeader>
                               <Heading size="md">
