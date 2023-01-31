@@ -1,5 +1,3 @@
-# Mamagreen
-
-### What this app does?
-
-This app helps search for house plant data
+<p align="center">
+  <img src="/public/images/mamagreen.JPG" title="hover text">
+</p>
