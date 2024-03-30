@@ -60,7 +60,9 @@ function Home() {
 
   return (
     <HomeDesign>
-      <img src="./images/cactus.png" alt="cactus" />
+      <img
+  src="https://i.pinimg.com/originals/72/dc/c8/72dcc8b8ee5c9cdcdf4b831522498399.png"
+  alt="aesthetic house plant image goes here" />
       <Div>
         <div className="search">
           <div className="search__item">
@@ -143,7 +145,7 @@ function Home() {
         <Button>Learn</Button>
       </Div> */}
       <Div>
-        <a href="https://github.com/thiratikan">
+        <a href="https://github.com/cminnich93">
           <Button>About Us</Button>
         </a>
       </Div>
